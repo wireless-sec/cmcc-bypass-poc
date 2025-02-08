@@ -1,5 +1,7 @@
 # CMCC认证绕过POC
 
+演示网站：https://wireless-sec.github.io/cmcc-bypass-poc/
+
 在此处备份一下大学的时候发现过的一个CMCC的漏洞，已经是一个过时的漏洞，谨以此纪念。
 
 
